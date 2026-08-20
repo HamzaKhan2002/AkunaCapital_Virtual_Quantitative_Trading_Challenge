@@ -1,0 +1,258 @@
+Compiler Messages Run 15
+
+Test Case 1:
+
+Market parameters: MarketParameters(ajarai_drift=0.001, ajarai_idio_std_dev=0.01, ajarai_rate_beta=-0.02, ajarai_sector_beta=1.0, rate_down_probability=0.2, rate_reversion_strength=0.1, rate_up_probability=0.25, sector_std_dev=0.02, theriodic_drift=0.0015, theriodic_idio_std_dev=0.012, theriodic_rate_beta=-0.015, theriodic_sector_beta=1.0, rate_step=0.25, rate_target=2.0)
+Underlyings: FED=3.0, AJR=500.0, THR=600.0
+1 (1d FED >= 3.00): user theo=0.7000, actual theo=0.7000
+2 (5d FED >= 3.50): user theo=0.0471, actual theo=0.0471
+3 (1d AJR >= 500.00): user theo=0.5309, actual theo=0.5309
+4 (10d THR >= 650.00): user theo=0.2068, actual theo=0.2068
+5 (1d THR - AJR >= 0.00): user theo=1.0000, actual theo=1.0000
+6 (10d THR - AJR >= 0.00): user theo=0.9999, actual theo=0.9999
+Result: PASS (max_error=0.0000)
+
+Test Case 2:
+
+Ranking:
+1. Hamza Khan: $1.9
+2. Stalemate Quoter: $0.0
+Hamza Khan bankrupt: False (cash balance: 11.9, starting capital: 10.0)
+> FED: 5.75, AJR: 1391.0, THR: 2269.23
+> FOK from counterparty 783057: buy 0.01 for 1 5498600 (2d THR >= 2419.00)
+> Hamza Khan ignored the FOK (theo=0.0729)
+
+[Underlying state advanced by one step]
+> FED: 5.5, AJR: 1327.04, THR: 2258.07
+> RFQ from counterparty 689497: sell 6 8734500 (1d THR >= 2371.00)
+> Hamza Khan quoted buy 0.0 for 500 / sell 139 @ 0.95 (theo=0.0456)
+> Hamza Khan bought 0.0 for 3 8734500 (1d THR >= 2371.00) (counterparty 689497)
+> RFQ from counterparty 689497: buy 2 8734500 (1d THR >= 2371.00)
+> Hamza Khan quoted buy 0.0 for 500 / sell 139 @ 0.95 (theo=0.0456)
+> Hamza Khan sold 2 @ 0.95 8734500 (1d THR >= 2371.00) (counterparty 689497)
+
+[Underlying state advanced by one step]
+> FED: 5.75, AJR: 1277.17, THR: 2241.32
+> 8734500 (0d THR >= 2371.00) expired with expiry_val=0.0
+Result: PASS (score=1.00)
+
+Test Case 3:
+
+Ranking:
+1. Hamza Khan: $0.81
+2. Stalemate Quoter: $0.0
+3. Fixed Width 0.1: $0.0
+Hamza Khan bankrupt: False (cash balance: 20.81, starting capital: 20.0)
+> FED: 1.5, AJR: 1143.14, THR: 1787.62
+> FOK from counterparty 482453: buy 0.99 for 2 4895269 (2d THR >= 1735.00)
+> Hamza Khan ignored the FOK (theo=0.9740)
+> RFQ from counterparty 309546: buy 3 3857985 (1d FED >= 1.75)
+> Hamza Khan quoted buy 0.19 for 26 / sell 6 @ 0.27 (theo=0.2273)
+> Hamza Khan sold 3 @ 0.27 3857985 (1d FED >= 1.75) (counterparty 309546)
+
+[Underlying state advanced by one step]
+> FED: 1.5, AJR: 1142.9, THR: 1794.43
+> 3857985 (0d FED >= 1.75) expired with expiry_val=0.0
+> FOK from counterparty 482453: sell 9 @ 0.99 4895269 (1d THR >= 1735.00)
+> Hamza Khan ignored the FOK (theo=0.9974)
+> FOK from counterparty 101661: sell 8 @ 0.99 1280022 (2d THR - AJR >= 0.00)
+> Hamza Khan ignored the FOK (theo=1.0000)
+
+[Underlying state advanced by one step]
+> FED: 1.5, AJR: 1162.7, THR: 1808.13
+> RFQ from counterparty 474121: buy 4 1280022 (1d THR - AJR >= 0.00)
+> Hamza Khan quoted buy 0.96 for 5 / sell 500 @ 1.0 (theo=1.0000)
+> Hamza Khan sold 2 @ 1.0 1280022 (1d THR - AJR >= 0.00) (counterparty 474121)
+> FOK from counterparty 482453: buy 0.99 for 8 5517759 (1d THR >= 1523.00)
+> Hamza Khan ignored the FOK (theo=1.0000)
+
+[Underlying state advanced by one step]
+> FED: 1.25, AJR: 1194.78, THR: 1863.33
+> 1280022 (0d THR - AJR >= 0.00) expired with expiry_val=1.0
+Result: PASS (score=1.00)
+
+Test Case 4:
+
+Ranking:
+1. Fixed Width 0.05: $2.9
+2. Mongoose: $0.3
+3. Hamza Khan: $-5.32
+Hamza Khan bankrupt: False (cash balance: 34.68, starting capital: 40.0)
+> FED: 2.25, AJR: 1309.3, THR: 635.29
+> FOK from counterparty 123260: buy 0.94 for 26 6685933 (1d THR >= 624.00)
+> Hamza Khan accepted the FOK (theo=0.8184)
+> Hamza Khan sold 26 @ 0.94 6685933 (1d THR >= 624.00) (counterparty 123260)
+> FOK from counterparty 469703: buy 0.39 for 11 4986864 (2d AJR >= 1315.00)
+> Hamza Khan ignored the FOK (theo=0.4347)
+> FOK from counterparty 469703: buy 0.99 for 2 6685933 (1d THR >= 624.00)
+> Hamza Khan accepted the FOK (theo=0.8184)
+> Hamza Khan sold 2 @ 0.99 6685933 (1d THR >= 624.00) (counterparty 469703)
+
+[Underlying state advanced by one step]
+> FED: 2.25, AJR: 1324.96, THR: 651.85
+> 6685933 (0d THR >= 624.00) expired with expiry_val=1.0
+> RFQ from counterparty 469703: sell 11 4986864 (1d AJR >= 1315.00)
+> Hamza Khan quoted buy 0.68 for 14 / sell 43 @ 0.78 (theo=0.7337)
+> FOK from counterparty 808858: buy 0.99 for 16 4765820 (2d FED >= 1.50)
+> Hamza Khan ignored the FOK (theo=1.0000)
+> FOK from counterparty 578477: buy 0.78 for 17 4986864 (1d AJR >= 1315.00)
+> Hamza Khan accepted the FOK (theo=0.7337)
+> Hamza Khan sold 17 @ 0.78 4986864 (1d AJR >= 1315.00) (counterparty 578477)
+
+[Underlying state advanced by one step]
+> FED: 2.25, AJR: 1347.82, THR: 648.13
+> 4986864 (0d AJR >= 1315.00) expired with expiry_val=1.0
+> FOK from counterparty 757814: sell 25 @ 0.01 7933446 (1d AJR >= 1408.00)
+> Hamza Khan ignored the FOK (theo=0.0005)
+> FOK from counterparty 808858: buy 0.99 for 26 7316899 (1d FED >= 1.00)
+> Hamza Khan ignored the FOK (theo=1.0000)
+
+[Underlying state advanced by one step]
+> FED: 2.25, AJR: 1361.52, THR: 690.84
+Result: PASS (score=1.00)
+
+Test Case 5:
+
+Ranking:
+1. Hamza Khan: $47.32
+2. Stalemate Quoter: $0.0
+Hamza Khan bankrupt: False (cash balance: 57.32, starting capital: 10.0)
+Result: PASS (score=1.00)
+
+Test Case 6:
+
+Ranking:
+1. Fixed Width 0.25: $6.1
+2. Hamza Khan: $0.67
+3. Stalemate Quoter: $0.0
+Hamza Khan bankrupt: False (cash balance: 10.67, starting capital: 10.0)
+Result: PASS (score=0.70)
+
+Test Case 7:
+
+Ranking:
+1. Hamza Khan: $18.09
+2. Fixed Width 0.25: $-1.72
+Hamza Khan bankrupt: False (cash balance: 28.09, starting capital: 10.0)
+Result: PASS (score=1.00)
+
+Test Case 8:
+
+Ranking:
+1. Fixed Width 0.1: $21.22
+2. Hamza Khan: $11.59
+3. Stalemate Quoter: $0.0
+Hamza Khan bankrupt: False (cash balance: 21.59, starting capital: 10.0)
+Result: PASS (score=0.70)
+
+Test Case 9:
+
+Ranking:
+1. Hamza Khan: $22.07
+2. Fixed Width 0.1: $6.39
+3. Fixed Width 0.25: $3.0
+Hamza Khan bankrupt: False (cash balance: 32.07, starting capital: 10.0)
+Result: PASS (score=1.00)
+
+Test Case 10:
+
+Ranking:
+1. Fixed Width 0.1: $28.33
+2. Hamza Khan: $19.09
+3. Stalemate Quoter: $0.0
+Hamza Khan bankrupt: False (cash balance: 39.09, starting capital: 20.0)
+Result: PASS (score=0.70)
+
+Test Case 11:
+
+Ranking:
+1. Hamza Khan: $17.23
+2. Fixed Width 0.1: $0.7
+3. Fixed Width 0.05: $-12.09
+Hamza Khan bankrupt: False (cash balance: 37.23, starting capital: 20.0)
+Result: PASS (score=1.00)
+
+Test Case 12:
+
+Ranking:
+1. Hamza Khan: $20.27
+2. Fixed Width 0.05: $-22.58
+Hamza Khan bankrupt: False (cash balance: 40.27, starting capital: 20.0)
+Result: PASS (score=1.00)
+
+Test Case 13:
+
+Ranking:
+1. Hamza Khan: $11.22
+2. Lattice: $11.11
+3. Fixed Width 0.1: $4.21
+4. Situational Unawareness: $3.71
+Hamza Khan bankrupt: False (cash balance: 31.22, starting capital: 20.0)
+Result: PASS (score=1.00)
+
+Test Case 14:
+
+Ranking:
+1. Hamza Khan: $22.85
+2. Lattice: $14.98
+3. Fixed Width 0.05: $-4.08
+Hamza Khan bankrupt: False (cash balance: 42.85, starting capital: 20.0)
+Result: PASS (score=1.00)
+
+Test Case 15:
+
+Ranking:
+1. Hamza Khan: $17.56
+2. Situational Unawareness: $3.57
+3. Lattice: $-1.48
+Hamza Khan bankrupt: False (cash balance: 37.56, starting capital: 20.0)
+Result: PASS (score=1.00)
+
+Test Case 16:
+
+Ranking:
+1. Hamza Khan: $23.76
+2. Fixed Width 0.05: $18.04
+3. Lattice: $0.79
+Hamza Khan bankrupt: False (cash balance: 63.76, starting capital: 40.0)
+Result: PASS (score=1.00)
+
+Test Case 17:
+
+Ranking:
+1. Lattice: $18.38
+2. Situational Unawareness: $7.96
+3. Hamza Khan: $-19.11
+4. Mongoose: $-29.54
+Hamza Khan bankrupt: False (cash balance: 20.89, starting capital: 40.0)
+Result: PASS (score=0.60)
+
+Test Case 18:
+
+Ranking:
+1. Fixed Width 0.05: $40.17
+2. Hamza Khan: $2.08
+3. Lattice: $-2.37
+4. Mongoose: $-5.63
+Hamza Khan bankrupt: False (cash balance: 42.08, starting capital: 40.0)
+Result: PASS (score=0.80)
+
+Test Case 19:
+
+Ranking:
+1. Situational Unawareness: $19.52
+2. Hamza Khan: $4.65
+3. Fixed Width 0.05: $-17.21
+4. Mongoose: $-25.31
+Hamza Khan bankrupt: False (cash balance: 44.65, starting capital: 40.0)
+Result: PASS (score=0.80)
+
+Test Case 20:
+
+Ranking:
+1. Hamza Khan: $5.68
+2. Lattice: $-11.88
+3. Mongoose: $-32.19
+4. Fixed Width 0.05: $-119.8
+Hamza Khan bankrupt: False (cash balance: 45.68, starting capital: 40.0)
+Result: PASS (score=1.00)
