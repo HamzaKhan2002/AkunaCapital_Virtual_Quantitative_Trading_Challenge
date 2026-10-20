@@ -1,4 +1,5 @@
 """Run 10 -> Run 11 PnL shift, ours vs each opponent. Tests the spillover mechanism."""
+import os
 import re
 
 def load(path):
@@ -10,8 +11,9 @@ def load(path):
                    re.findall(r"\d+\.\s+(.+?):\s+\$(-?[0-9.]+)", body)}
     return out
 
-a = load(r"mm2\Compiler_Messages_Run_10.txt")
-b = load(r"mm2\Compiler_Messages_Run_11.txt")
+ROOT = os.path.dirname(os.path.abspath(__file__))
+a = load(os.path.join(ROOT, "Compiler_Messages_Run_10.txt"))
+b = load(os.path.join(ROOT, "Compiler_Messages_Run_11.txt"))
 
 print(f"{'TC':>4}{'ours R10':>10}{'ours R11':>10}{'delta':>9}   opponents (R10 -> R11)")
 tot_us = tot_opp = 0.0

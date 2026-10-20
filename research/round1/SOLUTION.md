@@ -1,11 +1,12 @@
 # SOLUTION.md — Akuna 2026 Market Maker: architecture, evidence, and status
 
-*Reference document for the `mm2/Market_Maker_2.py` track. Written at the point the
-solution was locked at a verified score of **17.4/20** and further iteration was
-deliberately stopped. This file explains what the bot does and why, what is proven
+*Historical architecture/evidence snapshot for the Round 1 research track. This
+document was written when the verified score was **17.4/20**; later capacity
+changes raised the locked submission to 18.3/20. It explains what the earlier bot
+did and why, what is proven
 versus assumed, and exactly where it is weak. It is a companion to
 [GROUND_TRUTH.md](GROUND_TRUTH.md) (the rules, extracted at face value from official
-sources) — this file is about the solution built on top of those rules.*
+sources) — this file is an experiment-era record, not the current submission spec.*
 
 ---
 

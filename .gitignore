@@ -1,2 +1,15 @@
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+Thumbs.db
+Desktop.ini
+
+# Private planning prompts and third-party solution notebook
+/archive/prompts/
+/docs/source-material/LuthraSaurav_AkunaMMComp2025.ipynb

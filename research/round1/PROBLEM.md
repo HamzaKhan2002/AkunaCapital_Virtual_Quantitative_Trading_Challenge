@@ -4,7 +4,7 @@
 to state precisely. Every empirical constant cited here is measured, with the
 producing script named. Companion documents: [GROUND_TRUTH.md](GROUND_TRUTH.md)
 (rules, sourced verbatim), [SOLUTION.md](SOLUTION.md) (what we built),
-[MEMORY.md](../MEMORY.md) (chronological evidence log).*
+[MEMORY.md](MEMORY.md) (chronological evidence log).*
 
 ---
 

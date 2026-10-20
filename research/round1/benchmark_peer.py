@@ -5,6 +5,7 @@ starting capital and opponent roster before trusting any of it. Their numbers ar
 transcribed from a screenshot: treat as UNVERIFIED, but the capital/roster match is
 a strong integrity check.
 """
+import os
 import re
 
 # transcribed from the shared screenshot (participant "Shao-lyn-D10R")
@@ -28,7 +29,8 @@ THEIRS = [
     (16, 40, -5.66, 1, 4, 1.00, "THEM (negative PnL still won)"),
 ]
 
-txt = open(r"mm2\Compiler_Messages_Run_11.txt", encoding="utf-8", errors="ignore").read()
+txt = open(os.path.join(os.path.dirname(__file__), "Compiler_Messages_Run_11.txt"),
+           encoding="utf-8", errors="ignore").read()
 blocks = re.split(r"Test Case (\d+):", txt)[1:]
 ours = {}
 for tc, body in zip(map(int, blocks[0::2]), blocks[1::2]):

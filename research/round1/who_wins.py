@@ -1,7 +1,9 @@
 """Who wins the tests we never win, vs the tests we do win."""
+import os
 import re
 
-txt = open(r"mm2\Compiler_Messages_Run_10.txt", encoding="utf-8", errors="ignore").read()
+txt = open(os.path.join(os.path.dirname(__file__), "Compiler_Messages_Run_10.txt"),
+           encoding="utf-8", errors="ignore").read()
 blocks = re.split(r"Test Case (\d+):", txt)[1:]
 never = {5, 6, 7, 8, 10, 13, 14, 18, 19}
 

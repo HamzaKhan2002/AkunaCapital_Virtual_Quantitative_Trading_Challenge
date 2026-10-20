@@ -1,7 +1,9 @@
 """What is actually left? Headroom by test, with the peer benchmark as an existence proof."""
+import os
 import re
 
-txt = open(r"mm2\Compiler_Messages_Run_12.txt", encoding="utf-8", errors="ignore").read()
+txt = open(os.path.join(os.path.dirname(__file__), "Compiler_Messages_Run_12.txt"),
+           encoding="utf-8", errors="ignore").read()
 blocks = re.split(r"Test Case (\d+):", txt)[1:]
 PEER = {5: 0.40, 6: 0.40, 7: 0.40, 8: 0.70, 9: 1.00, 10: 0.70, 11: 1.00, 12: 1.00,
         13: 1.00, 14: 0.70, 15: 1.00, 16: 1.00, 17: 1.00, 18: 0.80, 19: 0.80, 20: 1.00}
